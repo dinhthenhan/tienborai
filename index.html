@@ -1,130 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DTN Regedit UI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            width: 300px;
-            padding: 20px;
-            background-color: #111;
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            text-align: left;
-            position: relative;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .highlight {
-            color: #00ff00;
-        }
-        .details p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-        .logo {
-            width: 100px;
-            height: auto;
-            display: block;
-            margin: 10px auto;
-            border-radius: 50px;
-            border: 2px solid #00ff00;
-            box-shadow: 2px 2px 2px 2px  #0084ff;
-        }
-        .controls {
-            margin-top: 10px;
-        }
-        .toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .slider {
-            margin-bottom: 10px;
-        }
-        .slider label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .slider input {
-            width: 100%;
-        }
-        .icon {
-            color: red;
-        }
-        .close-btn {
-            background: none;
-            border: none;
-            color: #00ff00;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        .close-btn:hover {
-            color: red;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>TheNhanDev</title>
+  <style>
+    body {
+      background-color: #111;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: #000;
+      border-radius: 12px;
+      padding: 20px 30px;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+      position: relative;
+      width: 320px;
+    }
+    .title {
+      text-align: center;
+      color: #00ffcc;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: yellow;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .btn {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn:hover {
+      background-color: darkred;
+    }
+
+    /* Toast notification */
+    .toast {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #222;
+      color: #00ffcc;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ffcc;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+    input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #00ffcc;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #00ffcc;
+  border-color: #00ffcc;
+}
+
+input[type="checkbox"]::after {
+  content: '☯️';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  opacity: 0;
+  transform: rotate(45deg);
+  transition: opacity 0.2s;
+}
+
+input[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <span>User: <span class="highlight">Tiến Bờ Rai</span></span>
-            <button class="close-btn">X</button>
-        </div>
-        <div class="details">
-            <p>Expired: <span class="highlight">7 Days</span></p>
-            <p>Nguyễn Xuân Tiến</p>
-        </div>
-        <div class="content">
-            <img src="https://img.upanh.tv/2025/03/28/z6452300520645_583a3e33f72c87b67e343e6be8050bc1.jpg" alt="Logo" class="logo">
-            <div class="controls">
-                <div class="toggle">
-                    <label for="aim-mode">Aim mode</label>
-                    <input type="checkbox" id="aim-mode">
-                </div>
-                <div class="toggle">
-                    <label for="aim-lockhead">Aim lockhead</label>
-                    <input type="checkbox" id="aim-lockhead">
-                </div>
-                <div class="toggle">
-                    <label for="aim-tracking">Aim tracking</label>
-                    <input type="checkbox" id="aim-tracking">
-                </div>
-                <div class="toggle">
-                    <label for="anti-banned">Anti Banned <span class="icon">🚫</span></label>
-                    <input type="checkbox" id="anti-banned">
-                </div>
-                <div class="slider">
-                    <label for="aim-pov">Aim Pov:</label>
-                    <input type="range" id="aim-pov" min="0" max="100" value="0">
-                </div>
-                <div class="slider">
-                    <label for="aimlock">Aimlock:</label>
-                    <input type="range" id="aimlock" min="0" max="100" value="0">
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="title">DPI Tool Lùa Gà</div>
+    <div class="option"><span>INCREASE DPI</span><input type="checkbox"></div>
+    <div class="option"><span>SHARPEN DISPLAY</span><input type="checkbox"></div>
+    <div class="option"><span>ENHANCE BRIGHTNESS</span><input type="checkbox"></div>
+    <div class="option"><span>ANTI-LAG MODE</span><input type="checkbox"></div>
+    <div class="option"><span>BUFF TOUCH INPUT</span><input type="checkbox"></div>
+    <div class="option"><span>OPTIMIZE FPS</span><input type="checkbox"></div>
+    <div class="btn-group">
+      <button class="btn" onclick="applySettings('max')">BUFF MAX</button>
+      <button class="btn" onclick="applySettings('smooth')">BUFF SMOOTH</button>
     </div>
-    <script>
-        document.querySelector('.close-btn').addEventListener('click', function() {
-            alert('Closing the UI!');
-        });
-    </script>
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script>
+    function applySettings(mode) {
+      const checked = [...document.querySelectorAll('input[type="checkbox"]')]
+                      .filter(cb => cb.checked)
+                      .map(cb => cb.parentElement.textContent.trim());
+
+      const settings = checked.length > 0 ? checked.join(', ') : 'Không có cài đặt nào được chọn';
+
+      showToast(`Đã áp dụng chế độ: ${mode.toUpperCase()}<br>Cài đặt: ${settings}`);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.innerHTML = message;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
+    }
+  </script>
 </body>
 </html>
